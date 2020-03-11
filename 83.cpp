@@ -18,31 +18,20 @@ int select(int n, int m)
     int sum = 0;
     int i = 0;
     int count = 0;
- 
     for (; i < m; ++i)
         ary[i] = 1;
- 
-    while (1)
-    {
+    while (1){
         while (cur < m - 1 && sum + ary[cur] < n)
             sum += ary[cur++];       
- 
         if (cur == m - 1 && n - sum >= ary[m - 2])
             ++count;
- 
         if (cur - 1 < 0)
             break;
- 
-        sum -= ary[--cur]++; 
- 
+        sum -= ary[--cur]++;  
         for (i = cur + 1; i < m; ++i)
             ary[i] = ary[cur];
-    }
- 
- 
-    if (ary)
-        free(ary);
- 
+    } 
+    if (ary) free(ary);
     return count;
  
 }
@@ -50,13 +39,11 @@ int select(int n, int m)
 int main() 
 { 
     int n = 0, m  = 0;
-   
     while(scanf("%d %d",&n, &m) != EOF)
     {
         if (n / m <= 0)
             continue;
         printf("%d\n", select(n, m));
     }
-    
     return 0;
 } 
